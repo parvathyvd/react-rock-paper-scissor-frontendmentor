@@ -23,7 +23,7 @@ function App() {
 
   useEffect(() => {
     pickHouseChoice();
-  }, []);
+  }, [houseChoice]);
 
   const myChoiceSetupHandler = (choice) => {
     setMyChoice(choice);
@@ -49,9 +49,7 @@ function App() {
                   score={score}
                   setScore={setScore}
                   myChoice={myChoice}
-                  setMyChoice={setMyChoice}
                   houseChoice={houseChoice}
-                  setHouseChoice={setHouseChoice}
                   playAgainHandler={playAgainHandler}
                 />
               }

@@ -9,8 +9,6 @@ const DisplayResult = ({
   setScore,
   myChoice,
   houseChoice,
-  setHouseChoice,
-  setMyChoice,
   playAgainHandler,
 }) => {
   const [text, setText] = useState("");
@@ -50,9 +48,10 @@ const DisplayResult = ({
       setWin("");
     }
   }, []);
+
   useEffect(() => {
     getResult();
-  }, [houseChoice, getResult]);
+  }, [houseChoice, myChoice, score, setScore, getResult]);
 
   let imgMySrc = "";
   if (myChoice === "rock") {
@@ -71,7 +70,6 @@ const DisplayResult = ({
     imgHouseSrc = scissors;
   }
   const onPlayAgainHandler = () => {
-    console.log("Play again");
     playAgainHandler();
     navigate("/");
   };
