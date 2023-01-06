@@ -7,21 +7,13 @@ import bgTriangle from "../images/bg-triangle.svg";
 
 const Game = ({ myChoiceSetupHandler }) => {
   const onClickHandler = (e) => {
-    console.log("target is", e.target.parentElement);
     let actualSelection;
-    if (e.target.classList.contains("wrapper-img")) {
-      actualSelection = e.target.parentElement.dataset.id;
-      console.log(
-        'inside e.target.parentElement.classList.contains("wrapper-img")',
-        actualSelection
-      );
-    } else if (e.target.parentElement.parentElement.hasAttribute("data-id")) {
-      actualSelection = e.target.parentElement.parentElement.dataset.id;
-      console.log(
-        "inside e.target.parentElement.parentElement",
-        actualSelection
-      );
-    } else actualSelection = e.target.dataset.id;
+    // console.log("target is", e.target);
+
+    let actualElement = e.target.closest(".choiceSelection");
+    actualSelection = actualElement.dataset.id;
+    // console.log("actualSelection", actualSelection);
+
     myChoiceSetupHandler(actualSelection);
   };
   return (
@@ -31,24 +23,36 @@ const Game = ({ myChoiceSetupHandler }) => {
       </div>
       <div className="paper-scissor">
         <Link to="/result">
-          <div className="paper" data-id="paper" onClick={onClickHandler}>
+          <div
+            className="paper choiceSelection"
+            data-id="paper"
+            onClick={onClickHandler}
+          >
             <div className="wrapper-img">
               <img src={iconPaper} alt="Paper" />
             </div>
           </div>
         </Link>
         <Link to="/result">
-          <div className="scissors" data-id="scissors">
+          <div
+            className="scissors choiceSelection"
+            data-id="scissors"
+            onClick={onClickHandler}
+          >
             <div className="wrapper-img">
-              <img src={iconScissors} onClick={onClickHandler} alt="Scissors" />
+              <img src={iconScissors} alt="Scissors" />
             </div>
           </div>
         </Link>
       </div>
       <Link to="/result">
-        <div className="rock" data-id="rock">
+        <div
+          className="rock choiceSelection"
+          data-id="rock"
+          onClick={onClickHandler}
+        >
           <div className="wrapper-img">
-            <img src={iconRock} onClick={onClickHandler} alt="Rock" />
+            <img src={iconRock} alt="Rock" />
           </div>
         </div>
       </Link>

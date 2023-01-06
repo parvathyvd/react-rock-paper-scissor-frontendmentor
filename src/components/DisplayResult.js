@@ -47,7 +47,7 @@ const DisplayResult = ({
       setText("Draw");
       setWin("");
     }
-  }, []);
+  }, [myChoice, houseChoice]);
 
   useEffect(() => {
     getResult();
@@ -99,7 +99,7 @@ const DisplayResult = ({
           <h3>House picked</h3>
           <div
             className={`${houseChoice}  ${
-              win === false && text !== "Draw" ? "selected" : ""
+              win === "false" && text !== "Draw" ? "selected" : ""
             }`}
           >
             <div className="wrapper-img">

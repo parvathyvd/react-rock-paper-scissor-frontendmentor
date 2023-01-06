@@ -23,7 +23,7 @@ function App() {
 
   useEffect(() => {
     pickHouseChoice();
-  }, [houseChoice]);
+  }, []);
 
   const myChoiceSetupHandler = (choice) => {
     setMyChoice(choice);
